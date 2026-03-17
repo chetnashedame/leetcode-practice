@@ -1,7 +1,7 @@
 class Solution {
     public int[] findRightInterval(int[][] intervals) {
         int n=intervals.length;
-        int[] res = new int[n];
+        int[] rightInterval = new int[n];
 
         int[][] start= new int[n][2];
         for(int i=0; i<n; i++){
@@ -28,9 +28,9 @@ class Solution {
                 }
             }
 
-            res[i] = ans;
+            rightInterval[i] = ans;
         }
 
-        return res;
+        return rightInterval;
     }
 }
