@@ -1,25 +1,25 @@
+import java.util.*;
+
 class Solution {
     public int[] nextGreaterElements(int[] nums) {
         int n = nums.length;
+        int[] res = new int[n];
+        Arrays.fill(res, -1);
 
-        int[] nge = new int[2 * n];
-        Arrays.fill(nge, -1);
-
-        Stack<Integer> st = new Stack<>(); // store indices
+        Stack<Integer> st = new Stack<>();
 
         for (int i = 0; i < 2 * n; i++) {
-            while (!st.isEmpty() && nums[i % n] > nums[st.peek() % n]) {
-                nge[st.peek()] = nums[i % n];
-                st.pop();
+            int num = nums[i % n];
+
+            while (!st.isEmpty() && nums[st.peek()] < num) {
+                res[st.pop()] = num;
             }
-            st.push(i);
+
+            if (i < n) {
+                st.push(i);
+            }
         }
 
-        int[] ans = new int[n];
-        for (int i = 0; i < n; i++) {
-            ans[i] = nge[i];
-        }
-
-        return ans;
+        return res;
     }
 }
