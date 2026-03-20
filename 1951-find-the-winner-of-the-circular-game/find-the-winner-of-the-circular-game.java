@@ -6,7 +6,7 @@ class Solution {
         int index = 0;
 
         while(list.size() > 1) {
-            index = (index + k - 1) % list.size();
+            index = (index + k - 1) % list.size(); //circular (I % size for circular list traversal )
             list.remove(index);
         }
 
