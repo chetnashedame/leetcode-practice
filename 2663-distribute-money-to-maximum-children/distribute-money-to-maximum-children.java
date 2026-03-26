@@ -1,5 +1,10 @@
 class Solution {
     public int distMoney(int money, int children) {
+// 1. Give 1 to each child
+// 2. Try to convert children into 8 (need +7)
+// 3. Handle edge cases:
+//    - leftover = 3 → creates 4
+//    - extra after all 8 → invalid
 
         // Step 1: each child must get at least 1
         if (money < children) return -1;
@@ -19,12 +24,12 @@ class Solution {
             n--;
         }
 
-        // ⚠️ Case 1: leftover = 3 and one child left → creates 4 ❌
+        //  Case 1: leftover = 3 and one child left → creates 4 
         if (money == 3 && count == children - 1) {
             return count - 1;
         }
 
-        // ⚠️ Case 2: all children got 8 but still money left ❌
+        //  Case 2: all children got 8 but still money left 
         if (count == children && money > 0) {
             return count - 1;
         }
