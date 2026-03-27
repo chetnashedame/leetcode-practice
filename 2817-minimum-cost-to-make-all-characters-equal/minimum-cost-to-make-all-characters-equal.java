@@ -6,7 +6,7 @@ class Solution {
         for(int i=1; i<n; i++){
 
             if (s.charAt(i) != s.charAt(i-1)){
-                cost+=Math.min(i, n-i);
+                cost+=Math.min(i, n-i);   ///min cost from 0 to i compare with i to n
             }
         }
         return cost;
