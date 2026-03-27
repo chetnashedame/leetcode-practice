@@ -22,7 +22,7 @@ class Solution {
                 return false;
             }
 
-            // use both(if pair exists then remove both)
+            // use both(if pair exists then remove both freq 0)
             map.put(x, map.get(x) - 1);
             map.put(doubleVal, map.get(doubleVal) - 1);
         }
