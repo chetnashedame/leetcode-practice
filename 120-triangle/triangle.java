@@ -1,3 +1,5 @@
+//as we know the last row we can use bottom up approch 
+
 class Solution {
     public int minimumTotal(List<List<Integer>> triangle) {
         int n= triangle.size();
