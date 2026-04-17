@@ -16,7 +16,7 @@ class Solution {
                         dp[i][j] = 1 + Math.min(
                             dp[i-1][j],        //top
                             Math.min(dp[i][j-1], dp[i-1][j-1]) ////left, diagonal
-                        );
+                        );                  ///cause from all these 3 values smallest one decides the square formation
                     }
 
                     total += dp[i][j];
