@@ -4,7 +4,7 @@ class Solution {
         int notHolding =0;                  ///dp[i][0]
 
         for(int price:prices){
-            holding= Math.max(holding, -price);     // buying day..only one transaction allowed
+            holding= Math.max(holding, -price);     // buying day..only one transaction allowed manipulate to get min buying price
             notHolding=Math.max(notHolding, holding+price);    //selling for max profit 
 
         }
