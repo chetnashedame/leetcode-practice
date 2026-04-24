@@ -13,9 +13,9 @@ class Solution {
                 int j = i + len - 1;
 
                 dp[i][j] = Math.max(
-                    nums[i] - dp[i + 1][j],       ////max from both cases and find diff is >= 0 if true or false ....true means player 1 score is > player 2
+                    nums[i] - dp[i + 1][j],      
                     nums[j] - dp[i][j - 1]
-                );
+                );              ////max from both cases and find diff is >= 0 if true or false ....true means player 1 score is > player 2
             }
         }
 
