@@ -1,14 +1,24 @@
+////// recursion+memoization approach (Top-down)
 class Solution {
+    int dp[];
     public int rob(int[] nums) {
-        int prev2 = 0; // dp[i-2]
-        int prev1 = 0; // dp[i-1]
+        int n= nums.length;
+        dp=new int[n];
 
-        for (int num : nums) {
-            int curr = Math.max(prev1, num + prev2);  ///////either take curr+prev2 (rob) or skip if prev1 is greater
-            prev2 = prev1;
-            prev1 = curr;
+        Arrays.fill(dp, -1);
+        return solve(nums, 0);
+    }
+    
+    private int solve(int []nums, int i){
+        if (i>=nums.length) return 0;
+
+        if(dp[i]!=-1){
+            return dp[i];
         }
 
-        return prev1;
+        int steal=nums[i]+solve(nums, i+2);
+        int skip =solve(nums, i+1);
+
+        return dp[i]=Math.max(steal, skip);
     }
 }
