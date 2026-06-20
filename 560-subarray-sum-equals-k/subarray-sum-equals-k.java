@@ -10,6 +10,7 @@ class Solution {
         //how many time prefixSum-k appeared
         count+= map.getOrDefault(prefixSum-k,0);
 
+        //record current prefixSum
         map.put(prefixSum, map.getOrDefault(prefixSum,0)+1);
      }
      return count;
