@@ -1,20 +1,15 @@
 class Solution {
     public boolean isValid(String s) {
-        Stack<Character> stack = new Stack<>();
+       Deque<Character> stack= new ArrayDeque<>();
 
-        for(char ch: s.toCharArray()){
-            if(ch=='(' || ch=='{' || ch =='['){
-                stack.push(ch);
-            }else{
-                if(stack.isEmpty())return false;
-
-                char topmost=stack.pop();
-
-                if(ch==')'&& topmost!='(' || ch=='}'&& topmost!='{' || ch==']'&& topmost!='[' ){
-                return false;
-                }
-            }
+       for(char c:s.toCharArray()){
+        switch (c) {
+            case '(' : stack.push(')'); break;
+            case '[' : stack.push(']'); break;
+            case '{' : stack.push('}'); break;
+        default :
+            if(stack.isEmpty() || stack.pop() != c) return false;
         }
-        return stack.isEmpty();
+       }return stack.isEmpty();
     }
 }
