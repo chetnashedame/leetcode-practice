@@ -5,27 +5,20 @@ class Solution {
             countMap.put(c, countMap.getOrDefault(c,0)+1);
         }
 
-        List<Character> [] buckets= new List[s.length()+1];
-        for(Map.Entry<Character, Integer> entries: countMap.entrySet()){
-            int f= entries.getValue();
-            if(buckets[f]==null){
-                buckets[f]=new ArrayList<>();
-            }    
-            buckets[f].add(entries.getKey());
-            
+       PriorityQueue<Map.Entry<Character, Integer>> maxHeap= new PriorityQueue<>((a,b) -> b.getValue()-a.getValue());
 
+       maxHeap.addAll(countMap.entrySet());
+
+       StringBuilder sb= new StringBuilder();
+       while(!maxHeap.isEmpty()){
+        Map.Entry<Character,Integer> entry = maxHeap.poll();
+        char c = entry.getKey();
+        int count = entry.getValue();
+        for(int i=0; i<count; i++){
+            sb.append(c);
         }
 
-        StringBuilder sb= new StringBuilder();
-        for(int i=buckets.length-1; i>0; i--){
-            if(buckets[i] != null){
-                for(char c:buckets[i]){
-                    for(int j=0; j<i; j++){
-                    sb.append(c);
-                    }
-                }
-            }
-        }
-        return sb.toString();
+       }
+       return sb.toString();
     }
 }
